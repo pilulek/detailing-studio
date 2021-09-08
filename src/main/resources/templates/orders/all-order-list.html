@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+		<title>Список всех заказов</title>
+</head>
+<body>
+	<div class="container">
+		<h3>Список всех заказов</h3>
+		<hr>
+		<!-- Add a button -->
+		<a th:href="@{/orders/showFormForAdd}"
+			class="btn btn-outline-dark mb-3">
+			Добавить заказ
+		</a>
+		<table class="table table-bordered table-hover table-secondary table-striped">
+			<thead class="thead-dark">
+			<tr>
+				<th>Номер заказа</th>
+				<th>Дата заказа</th>
+				<th>Транспортное средство</th>
+				<th>Контактное лицо</th>
+				<th>Действия</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr th:each="tempOrder : ${orders}">
+				<td th:text="${tempOrder.firstName}" />
+				<td th:text="${tempOrder.firstName}" />
+				<td th:text="${tempOrder.lastName}" />
+				<td th:text="${tempOrder.email}" />
+
+			<td>
+				<!-- Add update button/link -->
+				<a th:href="@{/orders/showFormForUpdate(orderId=${tempOrder.id})}"
+					class="btn btn-dark btn-sm">
+					Открыть
+				</a>
+
+				<!-- Add delete button/link -->
+				<a th:href="@{/orders/delete(orderId=${tempOrder.id})}"
+					class="btn btn-danger btn-sm"
+					onclick="if (!(confirm('Are you sure you want to delete this order?'))) return false">
+					Удалить
+				</a>
+			</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

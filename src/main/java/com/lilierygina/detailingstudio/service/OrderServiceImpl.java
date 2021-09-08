@@ -34,7 +34,7 @@ public class OrderServiceImpl implements OrderService {
       theOrder = result.get();
     } else {
       // if we didn't find the order
-      throw new RuntimeException("Did not find employee id - " + theId);
+      throw new RuntimeException("Did not find order id - " + theId);
     }
     return theOrder;
   }
