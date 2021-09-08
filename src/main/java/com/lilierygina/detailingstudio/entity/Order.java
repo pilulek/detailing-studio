@@ -9,7 +9,7 @@ public class Order {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name="id")
+  @Column(name="номер заказа")
   private int id;
 
   @Column(name="дата заказа")
