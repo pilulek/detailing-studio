@@ -24,17 +24,17 @@
 				<div class="row">
 				<div class="col-sm-4">
 				<p class="mb-2">Дата заказа</p>
-				<input type="text" th:field="*{firstName}"
+				<input type="text" th:field="*{orderDate}"
                    class="form-control mb-4 col-4" placeholder="Введите дату заказа">
 				</div>
 				<div class="col-sm-4">
 				<p class="mb-2">ФИО</p>
-				<input type="text" th:field="*{lastName}"
+				<input type="text" th:field="*{owner}"
                    class="form-control mb-4 col-4" placeholder="Введите ФИО">
 				</div>
 				<div class="col-sm-4">
 				<p class="mb-2">Телефон</p>
-				<input type="text" th:field="*{lastName}"
+				<input type="text" th:field="*{phoneNumber}"
                    class="form-control mb-4 col-4" placeholder="Введите телефон">
 				</div>
 				</div>
@@ -46,37 +46,32 @@
 				<input type="hidden" th:field="*{id}" />
 			
 				<p class="mb-2">Транспортное средство</p>
-				<input type="text" th:field="*{firstName}"
+				<input type="text" th:field="*{carModel}"
                    class="form-control mb-4 col-4" placeholder="Транспортное средство">
 				<p class="mb-2">Цвет авто</p>
-				<input type="text" th:field="*{firstName}"
-                   class="form-control mb-4 col-4" placeholder="Цвет авто"> 
-				<p class="mb-2">Бонусы</p>
-				<input type="text" th:field="*{firstName}"
-                   class="form-control mb-4 col-4" placeholder="Бонусы">
-				<p class="mb-2">Предыдущие заказы</p>
-				<input type="text" th:field="*{firstName}"
-                   class="form-control mb-4 col-4" placeholder="Предыдущий заказ №"> 
+				<input type="text" th:field="*{carColor}"
+                   class="form-control mb-4 col-4" placeholder="Цвет авто">
 				<p class="mb-2">Материал и цвет салона</p>
-				<input type="text" th:field="*{firstName}"
-                   class="form-control mb-4 col-4" placeholder="Материал и цвет салона">
+				<input type="text" th:field="*{carInterior}"
+				   class="form-control mb-4 col-4" placeholder="Материал и цвет салона">
+				<p class="mb-2">Предыдущие заказы</p>
+				<input type="text" th:field="*{previousOrder}"
+                   class="form-control mb-4 col-4" placeholder="Предыдущий заказ №"> 
+
 				
 				<button type="submit" class="btn btn-dark col-2">Сохранить</button>
 				</div>
 			
 				<div class="col">
 				<p class="mb-2">Услуги</p>
-				<input type="text" th:field="*{lastName}"
+				<input type="text" th:field="*{carService}"
                    class="form-control mb-4 col-4" placeholder="Услуги">
 				<p class="mb-2">Цена</p>	   
-				<input type="text" th:field="*{email}"
+				<input type="text" th:field="*{price}"
                    class="form-control mb-4 col-4" placeholder="Цена">
-				<p class="mb-2">Какое-то поле</p>
-				<input type="text" th:field="*{firstName}"
-                   class="form-control mb-4 col-4" placeholder="Транспортное средство"> 
-				<p class="mb-2">Какое-то поле</p>
-				<input type="text" th:field="*{firstName}"
-                   class="form-control mb-4 col-4" placeholder="Транспортное средство">
+				<p class="mb-2">Бонусы</p>
+				<input type="text" th:field="*{bonus}"
+				   class="form-control mb-4 col-4" placeholder="Бонусы">
 				</div>
 				</div>
 			</div>
