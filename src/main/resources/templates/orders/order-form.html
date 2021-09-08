@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <title>Форма заказа</title>
+</head>
+<body>
+    <div class="container">
+	<br>
+        <h3>Заказ №</h3>
+        <hr>
+        <!-- <p class="h4 mb-4">Save Order</p> -->
+		
+        <form action="#" th:action="@{/orders/save}"
+              th:object="${order}" method="post">
+
+
+			<div class="container">
+				<div class="row">
+				<div class="col-sm-4">
+				<p class="mb-2">Дата заказа</p>
+				<input type="text" th:field="*{firstName}"
+                   class="form-control mb-4 col-4" placeholder="Введите дату заказа">
+				</div>
+				<div class="col-sm-4">
+				<p class="mb-2">ФИО</p>
+				<input type="text" th:field="*{lastName}"
+                   class="form-control mb-4 col-4" placeholder="Введите ФИО">
+				</div>
+				<div class="col-sm-4">
+				<p class="mb-2">Телефон</p>
+				<input type="text" th:field="*{lastName}"
+                   class="form-control mb-4 col-4" placeholder="Введите телефон">
+				</div>
+				</div>
+				
+				
+				<div class="row justify-content-start">
+				<div class="col">
+			
+				<input type="hidden" th:field="*{id}" />
+			
+				<p class="mb-2">Транспортное средство</p>
+				<input type="text" th:field="*{firstName}"
+                   class="form-control mb-4 col-4" placeholder="Транспортное средство">
+				<p class="mb-2">Цвет авто</p>
+				<input type="text" th:field="*{firstName}"
+                   class="form-control mb-4 col-4" placeholder="Цвет авто"> 
+				<p class="mb-2">Бонусы</p>
+				<input type="text" th:field="*{firstName}"
+                   class="form-control mb-4 col-4" placeholder="Бонусы">
+				<p class="mb-2">Предыдущие заказы</p>
+				<input type="text" th:field="*{firstName}"
+                   class="form-control mb-4 col-4" placeholder="Предыдущий заказ №"> 
+				<p class="mb-2">Материал и цвет салона</p>
+				<input type="text" th:field="*{firstName}"
+                   class="form-control mb-4 col-4" placeholder="Материал и цвет салона">
+				
+				<button type="submit" class="btn btn-dark col-2">Сохранить</button>
+				</div>
+			
+				<div class="col">
+				<p class="mb-2">Услуги</p>
+				<input type="text" th:field="*{lastName}"
+                   class="form-control mb-4 col-4" placeholder="Услуги">
+				<p class="mb-2">Цена</p>	   
+				<input type="text" th:field="*{email}"
+                   class="form-control mb-4 col-4" placeholder="Цена">
+				<p class="mb-2">Какое-то поле</p>
+				<input type="text" th:field="*{firstName}"
+                   class="form-control mb-4 col-4" placeholder="Транспортное средство"> 
+				<p class="mb-2">Какое-то поле</p>
+				<input type="text" th:field="*{firstName}"
+                   class="form-control mb-4 col-4" placeholder="Транспортное средство">
+				</div>
+				</div>
+			</div>
+
+
+			<div class="container">
+			
+			</div>
+        </form>
+		
+
+        <hr>
+        <a th:href="@{/orders/list}" class="btn btn-outline-dark mb-3">Back to Orders List</a>
+    </div>
+</body>
+</html>
