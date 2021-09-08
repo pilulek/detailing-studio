@@ -30,10 +30,10 @@
 			</thead>
 			<tbody>
 			<tr th:each="tempOrder : ${orders}">
-				<td th:text="${tempOrder.firstName}" />
-				<td th:text="${tempOrder.firstName}" />
-				<td th:text="${tempOrder.lastName}" />
-				<td th:text="${tempOrder.email}" />
+				<td th:text="${tempOrder.id}" />
+				<td th:text="${tempOrder.orderDate}" />
+				<td th:text="${tempOrder.carModel}" />
+				<td th:text="${tempOrder.owner}" />
 
 			<td>
 				<!-- Add update button/link -->
