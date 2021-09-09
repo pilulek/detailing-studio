@@ -10,16 +10,21 @@
     <title>Форма заказа</title>
 </head>
 <body>
+<div class="p-3 mb-2 bg-secondary text-white">
     <div class="container">
 	<br>
-        <h3>Заказ №</h3>
-        <hr>
-        <!-- <p class="h4 mb-4">Save Order</p> -->
-		
         <form action="#" th:action="@{/orders/save}"
               th:object="${order}" method="post">
-
-
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-4">
+						<h3>Заказ №</h3>
+						<input type="text" th:field="*{id}"
+						class="form-control mb-4 col-4" id="disabledInput" disabled>
+					</div>
+				</div>
+			</div>
+			<hr>
 			<div class="container">
 				<div class="row">
 				<div class="col-sm-4">
@@ -38,8 +43,7 @@
                    class="form-control mb-4 col-4" placeholder="Введите телефон">
 				</div>
 				</div>
-				
-				
+
 				<div class="row justify-content-start">
 				<div class="col">
 			
@@ -59,7 +63,7 @@
                    class="form-control mb-4 col-4" placeholder="Предыдущий заказ №"> 
 
 				
-				<button type="submit" class="btn btn-dark col-2">Сохранить</button>
+				<button type="submit" class="btn btn-light col-2">Сохранить</button>
 				</div>
 			
 				<div class="col">
@@ -75,16 +79,12 @@
 				</div>
 				</div>
 			</div>
-
-
-			<div class="container">
-			
-			</div>
         </form>
 		
 
         <hr>
-        <a th:href="@{/orders/list}" class="btn btn-outline-dark mb-3">Back to Orders List</a>
+        <a th:href="@{/orders/list}" class="btn btn-outline-light mb-3">Back to Orders List</a>
     </div>
+</div>
 </body>
 </html>
