@@ -4,42 +4,42 @@ package com.lilierygina.detailingstudio.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name="orders")
+@Table(name="detailing_orders")
 public class Order {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name="номер заказа")
+  @Column(name="id")
   private int id;
 
-  @Column(name="дата заказа")
+  @Column(name="order_date")
   private String orderDate;
 
-  @Column(name="ФИО")
+  @Column(name="owner")
   private String owner;
 
-  @Column(name="Телефон")
+  @Column(name="phone_number")
   private String phoneNumber;
 
-  @Column(name="Транспортное средство")
+  @Column(name="car_model")
   private String carModel;
 
-  @Column(name="Цвет авто")
+  @Column(name="car_color")
   private String carColor;
 
-  @Column(name="Материал и цвет салона")
+  @Column(name="car_interior")
   private String carInterior;
 
-  @Column(name="Услуги")
+  @Column(name="car_service")
   private String carService;
 
-  @Column(name="Цена")
+  @Column(name="price")
   private String price;
 
-  @Column(name="Бонусы")
+  @Column(name="bonus")
   private String bonus;
 
-  @Column(name="Предыдущие заказы")
+  @Column(name="previous_order")
   private String previousOrder;
 
   public Order() {
