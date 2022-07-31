@@ -1,61 +1,62 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<!-- Required meta tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- Bootstrap CSS -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-		<title>Список всех заказов</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <title>Список всех заказов</title>
 </head>
 <body>
-<div class="p-3 mb-2 bg-secondary text-white">
-	<div class="container">
-		<br>
-		<br>
-		<h3>Список всех заказов</h3>
-		<hr>
-		<!-- Add a button -->
-		<a th:href="@{/orders/showFormForAdd}"
-			class="btn btn-outline-light mb-3">
-			Добавить заказ
-		</a>
-		<table class="table table-bordered table-hover table-dark table-striped">
-			<thead class="thead-dark">
-			<tr>
-				<th>Номер заказа</th>
-				<th>Дата заказа</th>
-				<th>Транспортное средство</th>
-				<th>Контактное лицо</th>
-				<th>Действия</th>
-			</tr>
-			</thead>
-			<tbody>
-			<tr th:each="tempOrder : ${orders}">
-				<td th:text="${tempOrder.id}" />
-				<td th:text="${tempOrder.orderDate}" />
-				<td th:text="${tempOrder.carModel}" />
-				<td th:text="${tempOrder.owner}" />
+<div class="p-3 mb-2 bg-light text-dark">
+    <div class="container">
+        <br>
+        <br>
+        <h3>Список заказов</h3>
+        <hr>
+        <!-- Add a button -->
+        <a th:href="@{/orders/showFormForAdd}"
+           class="btn btn-outline-dark mb-3">
+            Добавить заказ
+        </a>
+        <table class="table table-bordered table-hover table-light table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th>Номер заказа</th>
+                <th>Дата заказа</th>
+                <th>Транспортное средство</th>
+                <th>Контактное лицо</th>
+                <th>Действия</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="tempOrder : ${orders}">
+                <td th:text="${tempOrder.id}"/>
+                <td th:text="${tempOrder.orderDate}"/>
+                <td th:text="${tempOrder.carModel}"/>
+                <td th:text="${tempOrder.owner}"/>
 
-			<td>
-				<!-- Add update button/link -->
-				<a th:href="@{/orders/showFormForUpdate(orderId=${tempOrder.id})}"
-					class="btn btn-outline-light btn-sm">
-					Открыть
-				</a>
+                <td>
+                    <!-- Add update button/link -->
+                    <a th:href="@{/orders/showFormForUpdate(orderId=${tempOrder.id})}"
+                       class="btn btn-outline-primary btn-sm">
+                        Открыть
+                    </a>
 
-				<!-- Add delete button/link -->
-				<a th:href="@{/orders/delete(orderId=${tempOrder.id})}"
-					class="btn btn-outline-danger btn-sm"
-					onclick="if (!(confirm('Are you sure you want to delete this order?'))) return false">
-					Удалить
-				</a>
-			</td>
-			</tr>
-			</tbody>
-		</table>
-	</div>
+                    <!-- Add delete button/link -->
+                    <a th:href="@{/orders/delete(orderId=${tempOrder.id})}"
+                       class="btn btn-outline-danger btn-sm"
+                       onclick="if (!(confirm('Are you sure you want to delete this order?'))) return false">
+                        Удалить
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 </body>
 </html>
