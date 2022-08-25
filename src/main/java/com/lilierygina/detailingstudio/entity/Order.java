@@ -11,146 +11,166 @@ import java.util.Date;
 @Table(name = "detailing_orders")
 
 public class Order {
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name = "order_id")
-        private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_id")
+    private int id;
 
-        @DateTimeFormat(pattern = "yyyy-MM-dd")
-        @Column(name = "order_date")
-        private Date orderDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "order_date")
+    private Date orderDate;
 
-        @Column(name = "car_owner")
-        private String owner;
+    @Column(name = "car_owner")
+    private String owner;
 
-        @Column(name = "phone_number")
-        private String phoneNumber;
+    @Column(name = "phone_number")
+    private String phoneNumber;
 
-        @Column(name = "car_model")
-        private String carModel;
+    @Column(name = "car_model")
+    private String carModel;
 
-        @Column(name = "car_color")
-        private String carColor;
+    @Column(name = "car_color")
+    private String carColor;
 
-        @Column(name = "car_interior")
-        private String carInterior;
+    @Column(name = "car_interior")
+    private String carInterior;
 
-        @Column(name = "car_service")
-        private String carService;
 
-        @Column(name = "price")
-        private BigDecimal price;
+    @Column(name = "price")
+    private BigDecimal price;
 
-        @Column(name = "bonus")
-        private String bonus;
+    @Column(name = "bonus")
+    private String bonus;
 
-        @Column(name = "previous_order")
-        private String previousOrder;
+    @Column(name = "previous_order")
+    private String previousOrder;
 
-        public Order() {
-        }
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "service_id")
+    private ServicesList serviceId;
 
-        public Order(Date orderDate, String owner, String phoneNumber,
-                     String carModel, String carColor, String carInterior,
-                     String carService, BigDecimal price, String bonus,
-                     String previousOrder) {
-                this.orderDate = orderDate;
-                this.owner = owner;
-                this.phoneNumber = phoneNumber;
-                this.carModel = carModel;
-                this.carColor = carColor;
-                this.carInterior = carInterior;
-                this.carService = carService;
-                this.price = price;
-                this.bonus = bonus;
-                this.previousOrder = previousOrder;
-        }
+    public Order() {
+    }
 
-        public int getId() {
-                return id;
-        }
+    public Order(Date orderDate, String owner,
+                 String phoneNumber, String carModel,
+                 String carColor, String carInterior,
+                 BigDecimal price, String bonus,
+                 ServicesList serviceId) {
+        this.orderDate = orderDate;
+        this.owner = owner;
+        this.phoneNumber = phoneNumber;
+        this.carModel = carModel;
+        this.carColor = carColor;
+        this.carInterior = carInterior;
+        this.price = price;
+        this.bonus = bonus;
+        this.previousOrder = previousOrder;
+        this.serviceId = serviceId;
+    }
 
-        public void setId(int id) {
-                this.id = id;
-        }
+    public int getId() {
+        return id;
+    }
 
-        public Date getOrderDate() {
-                return orderDate;
-        }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-        public void setOrderDate(Date orderDate) {
-                this.orderDate = orderDate;
-        }
+    public Date getOrderDate() {
+        return orderDate;
+    }
 
-        public String getOwner() {
-                return owner;
-        }
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
+    }
 
-        public void setOwner(String owner) {
-                this.owner = owner;
-        }
+    public String getOwner() {
+        return owner;
+    }
 
-        public String getPhoneNumber() {
-                return phoneNumber;
-        }
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
 
-        public void setPhoneNumber(String phoneNumber) {
-                this.phoneNumber = phoneNumber;
-        }
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
 
-        public String getCarModel() {
-                return carModel;
-        }
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
-        public void setCarModel(String carModel) {
-                this.carModel = carModel;
-        }
+    public String getCarModel() {
+        return carModel;
+    }
 
-        public String getCarColor() {
-                return carColor;
-        }
+    public void setCarModel(String carModel) {
+        this.carModel = carModel;
+    }
 
-        public void setCarColor(String carColor) {
-                this.carColor = carColor;
-        }
+    public String getCarColor() {
+        return carColor;
+    }
 
-        public String getCarInterior() {
-                return carInterior;
-        }
+    public void setCarColor(String carColor) {
+        this.carColor = carColor;
+    }
 
-        public void setCarInterior(String carInterior) {
-                this.carInterior = carInterior;
-        }
+    public String getCarInterior() {
+        return carInterior;
+    }
 
-        public String getCarService() {
-                return carService;
-        }
+    public void setCarInterior(String carInterior) {
+        this.carInterior = carInterior;
+    }
 
-        public void setCarService(String carService) {
-                this.carService = carService;
-        }
+    public BigDecimal getPrice() {
+        return price;
+    }
 
-        public BigDecimal getPrice() {
-                return price;
-        }
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
 
-        public void setPrice(BigDecimal price) {
-                this.price = price;
-        }
+    public String getBonus() {
+        return bonus;
+    }
 
-        public String getBonus() {
-                return bonus;
-        }
+    public void setBonus(String bonus) {
+        this.bonus = bonus;
+    }
 
-        public void setBonus(String bonus) {
-                this.bonus = bonus;
-        }
+    public String getPreviousOrder() {
+        return previousOrder;
+    }
 
-        public String getPreviousOrder() {
-                return previousOrder;
-        }
+    public void setPreviousOrder(String previousOrder) {
+        this.previousOrder = previousOrder;
+    }
 
-        public void setPreviousOrder(String previousOrder) {
-                this.previousOrder = previousOrder;
-        }
+    public ServicesList getServicesList() {
+        return serviceId;
+    }
+
+    public void setServicesList(ServicesList servicesList) {
+        this.serviceId = servicesList;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+            "id=" + id +
+            ", orderDate=" + orderDate +
+            ", owner='" + owner + '\'' +
+            ", phoneNumber='" + phoneNumber + '\'' +
+            ", carModel='" + carModel + '\'' +
+            ", carColor='" + carColor + '\'' +
+            ", carInterior='" + carInterior + '\'' +
+            ", price=" + price +
+            ", bonus='" + bonus + '\'' +
+            ", previousOrder='" + previousOrder + '\'' +
+            ", servicesList=" + serviceId +
+            '}';
+    }
 }

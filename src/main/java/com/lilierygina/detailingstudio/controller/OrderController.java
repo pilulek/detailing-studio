@@ -1,22 +1,26 @@
 package com.lilierygina.detailingstudio.controller;
 
 import com.lilierygina.detailingstudio.entity.Order;
+import com.lilierygina.detailingstudio.entity.ServicesList;
 import com.lilierygina.detailingstudio.service.OrderService;
+import com.lilierygina.detailingstudio.service.ServicesListService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 @RequestMapping("/orders")
 public class OrderController {
         private final OrderService orderService;
+        private final ServicesListService servicesListService;
 
         // constructor injection
-        public OrderController(OrderService theOrderService) {
-                orderService = theOrderService;
+        public OrderController(OrderService theOrderService,
+                               ServicesListService servicesListService) {
+                this.orderService = theOrderService;
+                this.servicesListService = servicesListService;
         }
 
         // add mapping for "/list"
@@ -34,9 +38,12 @@ public class OrderController {
         public String showFormForAdd(Model theModel) {
                 // create model attribute to bind form data
                 Order theOrder = new Order();
+                ServicesList theServicesList = new ServicesList();
+                theOrder.setServicesList(theServicesList);
 
                 // thymeleaf template will access this data for binding form data
                 theModel.addAttribute("order", theOrder);
+                theModel.addAttribute("servicesList", theServicesList);
 
                 return "orders/order-form";
         }
@@ -45,19 +52,32 @@ public class OrderController {
         public String showFormForUpdate(@RequestParam("orderId") int theId, Model theModel) {
                 // get the order from the service
                 Order theOrder = orderService.findById(theId);
+                ServicesList theServicesList = servicesListService.findById(theOrder.getServicesList().getId());
 
                 // set order as a model attribute to pre-populate the form
                 theModel.addAttribute("order", theOrder);
+                theModel.addAttribute("servicesList", theServicesList);
                 // send over to form
                 return "orders/order-form";
         }
 
         @PostMapping("/save")
-        public String saveOrder(@ModelAttribute("order") Order theOrder) {
+        public String saveOrder(@ModelAttribute("order") Order theOrder, ServicesList servicesList) {
+                // save the order
+                theOrder.setServicesList(servicesList);
+                servicesListService.save(new ServicesList(servicesList));
+                orderService.save(theOrder);
+
+                // use a redirect to prevent duplicate submissions
+                return "redirect:/orders/list";
+        }
+
+        @GetMapping("/update")
+        public String updateOrder(@ModelAttribute("order") Order theOrder) {
                 // save the order
                 orderService.save(theOrder);
                 // use a redirect to prevent duplicate submissions
-                return "redirect:/orders/list";
+                return "orders/order-form";
         }
 
         @GetMapping("/delete")

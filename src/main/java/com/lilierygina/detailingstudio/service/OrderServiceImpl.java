@@ -11,41 +11,39 @@ import java.util.Optional;
 
 @Service
 public class OrderServiceImpl implements OrderService {
+    private final OrderRepository orderRepository;
+    @Autowired
+    public OrderServiceImpl(OrderRepository theOrderRepository) {
+        orderRepository = theOrderRepository;
+    }
 
-        private final OrderRepository orderRepository;
-
-        @Autowired
-        public OrderServiceImpl(OrderRepository theOrderRepository) {
-                orderRepository = theOrderRepository;
-        }
-
-        @Override
-        public List<Order> findAll() {
+    @Override
+    public List<Order> findAll() {
                 return orderRepository.findAll();
         }
 
-        @Override
-        public Order findById(int theId) {
-                Optional<Order> result = orderRepository.findById(theId);
+    @Override
+    public Order findById(int theId) {
+        Optional<Order> result = orderRepository.findById(theId);
 
-                Order theOrder = null;
+        Order theOrder = null;
 
-                if (result.isPresent()) {
-                        theOrder = result.get();
-                } else {
-                        // if we didn't find the order
-                        throw new RuntimeException("Did not find order id - " + theId);
-                }
-                return theOrder;
+        if (result.isPresent()) {
+            theOrder = result.get();
+        } else {
+            // if we didn't find the order
+            throw new RuntimeException("Did not find order id - " + theId);
         }
+            return theOrder;
+    }
 
-        @Override
-        public void save(Order theOrder) {
-                orderRepository.save(theOrder);
-        }
+    @Override
+    public void save(Order theOrder) {
+        orderRepository.save(theOrder);
+    }
 
-        @Override
-        public void deleteById(int theId) {
-                orderRepository.deleteById(theId);
-        }
+    @Override
+    public void deleteById(int theId) {
+        orderRepository.deleteById(theId);
+    }
 }
