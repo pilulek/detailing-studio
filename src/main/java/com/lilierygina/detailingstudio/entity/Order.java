@@ -14,7 +14,7 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
-    private int id;
+    private Integer id;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "order_date")
@@ -69,11 +69,11 @@ public class Order {
         this.serviceId = serviceId;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -155,22 +155,5 @@ public class Order {
 
     public void setServicesList(ServicesList servicesList) {
         this.serviceId = servicesList;
-    }
-
-    @Override
-    public String toString() {
-        return "Order{" +
-            "id=" + id +
-            ", orderDate=" + orderDate +
-            ", owner='" + owner + '\'' +
-            ", phoneNumber='" + phoneNumber + '\'' +
-            ", carModel='" + carModel + '\'' +
-            ", carColor='" + carColor + '\'' +
-            ", carInterior='" + carInterior + '\'' +
-            ", price=" + price +
-            ", bonus='" + bonus + '\'' +
-            ", previousOrder='" + previousOrder + '\'' +
-            ", servicesList=" + serviceId +
-            '}';
     }
 }

@@ -15,112 +15,105 @@
 <div class="p-3 mb-2 bg-light text-dark">
     <div class="container">
         <br>
-        <form action="#" th:action="@{/orders/save}"  method="post">
+        <form action="#" th:action="@{/orders/save}" method="post">
             <div class="row justify-content-start">
-                <h4>Информация о заказчике</h4>
-                <h4></h4>
-                <h4></h4>
-                <h4></h4>
-                <div class="col">
+                <h4 class="text-success">Заказчик</h4>
+                <div class="col-sm-4">
                     <p class="mb-2">ФИО</p>
                     <input type="text" th:required="required" th:field="*{order.owner}"
-                           class="form-control mb-4 col-4" placeholder="Введите ФИО">
+                           class="form-control mb-2 col-4 border border-warning">
 
                     <p class="mb-2">Телефон</p>
                     <input type="tel" th:required="required" th:field="*{order.phoneNumber}"
-                           class="form-control mb-4 col-4" placeholder="Введите телефон">
+                           class="form-control mb-2 col-4 border border-warning" placeholder="+7-(XXX)-XXX-XX-XX">
                 </div>
 
-                <div class="col">
+                <div class="col-sm-4">
                     <p class="mb-2">Номер заказа</p>
                     <input type="text" th:field="*{order.id}"
-                           class="form-control mb-4 col-4" placeholder="Номер заказа (заполнится автоматически)"
+                           class="form-control mb-2 col-4 border border-warning" placeholder="Номер заказа (заполнится автоматически)"
                            id="disabledInput" disabled>
 
                     <p class="mb-2">Дата заказа</p>
                     <input type="date" th:required="required" th:field="*{order.orderDate}"
-                           class="form-control mb-4 col-4" placeholder="Введите дату заказа">
+                           class="form-control mb-2 col-4 border border-warning">
                 </div>
-            </div>
-            <hr>
-            <div class="row justify-content-start">
-                <h4>Информация о транспортном средстве</h4>
-                <h4></h4>
-                <h4></h4>
-                <h4></h4>
-                <div class="col">
-                    <input type="hidden" th:field="*{order.id}"/>
-
-                    <p class="mb-2">Транспортное средство</p>
-                    <input type="text" th:required="required" th:field="*{order.carModel}"
-                           class="form-control mb-4 col-4" placeholder="Транспортное средство">
-                </div>
-                <div class="col">
-                    <p class="mb-2">Цвет авто</p>
-                    <input type="text" th:field="*{order.carColor}"
-                           class="form-control mb-4 col-4" placeholder="Цвет авто">
-                </div>
-                <div class="col">
-                    <p class="mb-2">Материал и цвет салона</p>
-                    <input type="text" th:field="*{order.carInterior}"
-                           class="form-control mb-4 col-4" placeholder="Материал и цвет салона">
-                </div>
-            </div>
-            <hr>
-            <div class="row justify-content-start">
-                <h4>Услуги</h4>
-                <h4></h4>
-                <h4></h4>
-                <h4></h4>
-<!--                <input type="hidden" th:field="*{carService.id}"/>-->
-                <div class="col">
-                    <p class="mb-2">Услуга</p>
-                    <select class="form-control mb-4 col-4" th:field="*{servicesList.serviceName1}">
-                        <option th:each="color : ${T(com.lilierygina.detailingstudio.entity.ServiceType).values()}"
-                                th:value="${color}" th:text="${color.serviceType}"></option>
-                    </select>
-
-                    <p class="mb-2">Услуга</p>
-                    <select class="form-control mb-4 col-4" th:field="*{servicesList.serviceName2}">
-                        <option th:each="color : ${T(com.lilierygina.detailingstudio.entity.ServiceType).values()}"
-                                th:value="${color}" th:text="${color.serviceType}"></option>
-                    </select>
-
-                    <p class="mb-2">Услуга</p>
-                    <select class="form-control mb-4 col-4" th:field="*{servicesList.serviceName3}">
-                        <option th:each="color : ${T(com.lilierygina.detailingstudio.entity.ServiceType).values()}"
-                                th:value="${color}" th:text="${color.serviceType}"></option>
-                    </select>
-
-                    <p class="mb-2">Итого:</p>
-                    <input type="text" th:field="*{servicesList.totalPrice}"
-                           class="form-control mb-4 col-4">
-                </div>
-
-                <div class="col">
-                    <p class="mb-2">Цена</p>
-                    <input type="text" th:required="required" th:field="*{servicesList.servicePrice1}"
-                           class="form-control mb-4 col-4" placeholder="Цена">
-                    <p class="mb-2">Цена</p>
-                    <input type="text" th:field="*{servicesList.servicePrice2}"
-                           class="form-control mb-4 col-4" placeholder="Цена">
-                    <p class="mb-2">Цена</p>
-                    <input type="text" th:field="*{servicesList.servicePrice3}"
-                           class="form-control mb-4 col-4" placeholder="Цена">
-                </div>
-                <div class="col">
+                <div class="col-sm-4">
                     <p class="mb-2">Бонусы</p>
                     <input type="text" th:field="*{order.bonus}"
-                           class="form-control mb-4 col-4" placeholder="Скидка или подарок">
-                    <p class="mb-2">Предыдущие заказы</p>
+                           class="form-control mb-2 col-4 border border-warning" placeholder="Скидка или подарок">
+                    <p class="mb-2">Предыдущий заказ</p>
                     <input type="text" th:field="*{order.previousOrder}"
-                           class="form-control mb-4 col-4" placeholder="Предыдущий заказ №">
+                           class="form-control mb-2 col-4 border border-warning" placeholder="Предыдущий заказ №">
                 </div>
             </div>
             <hr>
-            <a th:href="@{/orders/list}" class="btn btn-outline-primary">Назад в список заказов</a>
-            <button type="submit" class="btn btn-outline-success">Сохранить</button>
-            <a th:href="@{/orders/showFormForUpdate(orderId=*{order.id})}" class="btn btn-outline-warning">Обновить</a>
+            <div class="row justify-content-start">
+                <div class="col-sm-4">
+                    <h4 class="text-success">Транспортное средство</h4>
+                    <h4></h4>
+                    <h4></h4>
+                    <div class="col-sm">
+                        <input type="hidden" th:field="*{order.id}"/>
+                        <p class="mb-2">Марка и модель</p>
+                        <input type="text" th:required="required" th:field="*{order.carModel}"
+                               class="form-control mb-2 col-4 border border-warning">
+                    </div>
+                    <div class="col-sm">
+                        <p class="mb-2">Цвет автомобиля</p>
+                        <input type="text" th:field="*{order.carColor}"
+                               class="form-control mb-2 col-4 border border-warning">
+                    </div>
+                    <div class="col-sm">
+                        <p class="mb-2">Материал и цвет салона</p>
+                        <input type="text" th:field="*{order.carInterior}"
+                               class="form-control mb-2 col-4 border border-warning">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <h4 class="text-success">Услуги</h4>
+                    <h4></h4>
+                    <h4></h4>
+                    <!--                <input type="hidden" th:field="*{carService.id}"/>-->
+                    <p class="mb-2">Услуга</p>
+                    <select class="form-control mb-2 col-4 border border-warning" th:field="*{servicesList.serviceName1}">
+                        <option th:each="color : ${T(com.lilierygina.detailingstudio.entity.ServiceType).values()}"
+                                th:value="${color}" th:text="${color.serviceType}"></option>
+                    </select>
+                    <p class="mb-2">Услуга</p>
+                    <select class="form-control mb-2 col-4 border border-warning" th:field="*{servicesList.serviceName2}">
+                        <option th:each="color : ${T(com.lilierygina.detailingstudio.entity.ServiceType).values()}"
+                                th:value="${color}" th:text="${color.serviceType}"></option>
+                    </select>
+                    <p class="mb-2">Услуга</p>
+                    <select class="form-control mb-2 col-4 border border-warning" th:field="*{servicesList.serviceName3}">
+                        <option th:each="color : ${T(com.lilierygina.detailingstudio.entity.ServiceType).values()}"
+                                th:value="${color}" th:text="${color.serviceType}"></option>
+                    </select>
+                </div>
+                <div class="col-sm-4">
+                    <h4 class="text-success">Цена</h4>
+                    <h4></h4>
+                    <h4></h4>
+                    <p class="mb-2">Цена</p>
+                    <input type="text" th:required="required" th:field="*{servicesList.servicePrice1}"
+                           class="form-control mb-2 col-4 border border-warning">
+                    <p class="mb-2">Цена</p>
+                    <input type="text" th:field="*{servicesList.servicePrice2}"
+                           class="form-control mb-2 col-4 border border-warning">
+                    <p class="mb-2">Цена</p>
+                    <input type="text" th:field="*{servicesList.servicePrice3}"
+                           class="form-control mb-2 col-4 border border-warning">
+                    <p class="mb-2">Итого:</p>
+                    <input type="text" th:field="*{servicesList.totalPrice}"
+                           class="form-control mb-2 col-4 border border-warning">
+                </div>
+            </div>
+            <hr>
+            <a th:href="@{/orders/list}" class="btn btn-primary"><strong>Назад в список заказов</strong></a>
+            <button type="submit" class="btn btn-success"><strong>Сохранить</strong></button>
+            <a th:href="@{/orders/showFormForUpdate(orderId=*{order.id})}" class="btn btn-dark"><strong>Обновить</strong></a>
+            <a th:href="@{/orders/showDocument(orderId=*{order.id})}" class="btn btn-warning"><strong>Печать</strong></a>
         </form>
 
     </div>
