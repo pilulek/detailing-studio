@@ -1,6 +1,8 @@
 package com.lilierygina.detailingstudio.service;
 
+import com.lilierygina.detailingstudio.dao.OrderRepository;
 import com.lilierygina.detailingstudio.dao.ServicesListRepository;
+import com.lilierygina.detailingstudio.entity.Order;
 import com.lilierygina.detailingstudio.entity.ServicesList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,19 +13,23 @@ import java.util.Optional;
 public class ServicesListServiceImpl implements ServicesListService {
 
     private final ServicesListRepository servicesListRepository;
+    private final OrderRepository orderRepository;
 
     @Autowired
-    public ServicesListServiceImpl(ServicesListRepository servicesListRepository) {
+    public ServicesListServiceImpl(ServicesListRepository servicesListRepository,
+                                   OrderRepository orderRepository) {
         this.servicesListRepository = servicesListRepository;
+        this.orderRepository = orderRepository;
     }
+
     @Override
-    public ServicesList findById(int theId) {
-        Optional<ServicesList> result = servicesListRepository.findById(theId);
+    public ServicesList findByOrderId(int orderId) {
+        Optional<Order> result = orderRepository.findById(orderId);
         ServicesList theServiceList = null;
         if (result.isPresent()) {
-            theServiceList = result.get();
+            theServiceList = result.get().getServicesList();
         } else {
-            throw new RuntimeException("Did not find serviceList id - " + theId);
+            throw new RuntimeException("Did not find serviceList id - " + orderId);
         }
         return theServiceList;
     }

@@ -15,42 +15,47 @@
     <div class="container">
         <br>
         <br>
-        <h3>Список заказов</h3>
+        <h3 class="text-success">Список заказов</h3>
         <hr>
         <!-- Add a button -->
         <a th:href="@{/orders/showFormForAdd}"
-           class="btn btn-outline-dark mb-3">
-            Добавить заказ
+           class="btn btn-dark mb-3">
+            <strong>Добавить заказ</strong>
         </a>
-        <table class="table table-bordered table-hover table-light table-striped">
+        <a th:href="@{/orders/list}"
+           class="btn btn-warning mb-3">
+            <strong>Статистика</strong>
+        </a>
+        <table class="table table-bordered table-hover table-light table-striped border border-warning">
             <thead class="thead-dark">
             <tr>
-                <th>Номер заказа</th>
-                <th>Дата заказа</th>
-                <th>Транспортное средство</th>
-                <th>Контактное лицо</th>
-                <th>Действия</th>
+                <th class="text-success">Номер заказа</th>
+                <th class="text-success">Дата заказа</th>
+                <th class="text-success">Транспортное средство</th>
+                <th class="text-success">Контактное лицо</th>
+                <th class="text-success">Действия</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="tempOrder : ${orders}">
                 <td th:text="${tempOrder.id}"/>
-                <td th:text="${tempOrder.orderDate}"/>
+<!--                <td th:text="${tempOrder.orderDate}"/>-->
+                <td th:text="${#dates.format(tempOrder.orderDate, 'yyyy-MM-dd')}"/>
                 <td th:text="${tempOrder.carModel}"/>
                 <td th:text="${tempOrder.owner}"/>
 
                 <td>
                     <!-- Add update button/link -->
                     <a th:href="@{/orders/showFormForUpdate(orderId=${tempOrder.id})}"
-                       class="btn btn-outline-primary btn-sm">
-                        Открыть
+                       class="btn btn-success btn-sm">
+                        <strong>Открыть</strong>
                     </a>
 
                     <!-- Add delete button/link -->
                     <a th:href="@{/orders/delete(orderId=${tempOrder.id})}"
-                       class="btn btn-outline-danger btn-sm"
+                       class="btn btn-danger btn-sm"
                        onclick="if (!(confirm('Are you sure you want to delete this order?'))) return false">
-                        Удалить
+                        <strong>Удалить</strong>
                     </a>
                 </td>
             </tr>

@@ -10,7 +10,7 @@ public class ServicesList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Integer id;
 
     @Column(name = "service_name1")
     private String serviceName1;
@@ -68,11 +68,11 @@ public class ServicesList {
         this.orderId = orderId;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -138,20 +138,5 @@ public class ServicesList {
 
     public void setOrderId(Order orderId) {
         this.orderId = orderId;
-    }
-
-    @Override
-    public String toString() {
-        return "ServicesList{" +
-            "id=" + id +
-            ", serviceName1='" + serviceName1 + '\'' +
-            ", servicePrice1=" + servicePrice1 +
-            ", serviceName2='" + serviceName2 + '\'' +
-            ", servicePrice2=" + servicePrice2 +
-            ", serviceName3='" + serviceName3 + '\'' +
-            ", servicePrice3=" + servicePrice3 +
-            ", totalPrice=" + totalPrice +
-            ", orderId=" + orderId +
-            '}';
     }
 }
