@@ -1,9 +1,7 @@
 package com.lilierygina.detailingstudio;
 
-import com.lilierygina.detailingstudio.controller.OrderController;
 import com.lilierygina.detailingstudio.entity.Order;
 import com.lilierygina.detailingstudio.service.OrderService;
-import org.springframework.ui.Model;
 
 import java.util.List;
 
